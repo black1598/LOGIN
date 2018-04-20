@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {AuthService} from '../../servicios/auth.service';
+import {Router} from '@angular/router';
+
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authService:AuthService
+  ) { }
 
   ngOnInit() {
+  }
+
+  onClickGoogleLogin(){
+    this.authService.loginGoogle()
+    .then((res) => {
+    
+
+    })
   }
 
 }
