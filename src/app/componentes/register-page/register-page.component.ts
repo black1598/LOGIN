@@ -13,6 +13,7 @@ export class RegisterPageComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router
+    
   ) { }
 
   ngOnInit() {
@@ -20,12 +21,9 @@ export class RegisterPageComponent implements OnInit {
   onSubmitAddUser(){
     this.authService.registeruser(this.email, this.password)
     .then((res) =>{
-     this.router.navigate(['/privado']); 
-
-    }).catch((err) =>{
+      this.router.navigate(['/privado']);
+    }).catch( (err) => {
       console.log(err);
-      
     });
   }
-
 }

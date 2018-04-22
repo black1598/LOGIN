@@ -10,20 +10,25 @@ import {Router} from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  public email: string;
+  public password: string;
 
   constructor(
-    public authService:AuthService
+    public authService: AuthService,
+    public router: Router
   ) { }
 
   ngOnInit() {
   }
 
-  onClickGoogleLogin(){
-    this.authService.loginGoogle()
-    .then((res) => {
-    
-
+  onSubmitLogin(){
+    this.authService.loginEmail(this.email, this.password)
+    .then((res) =>{
+      this.router.navigate(['/privado']);
+    }).catch((err) =>{
+      console.log(err);
+      this.router.navigate(['/login']);
     })
   }
 
-}
+ }
